@@ -145,7 +145,7 @@ header{
 }
 
 .send-btn{
-    width:90px;
+    width:70px;
     background:#00ff88;
     border:none;
     font-weight:bold;
@@ -176,8 +176,8 @@ header{
     }
 
     .send-btn{
-        width:70px;
-        font-size:14px;
+        width:65px;
+        font-size:13px;
     }
 }
 
@@ -202,17 +202,18 @@ header{
 
     <div class="login-box">
 
-        <h1>CYBER LOGIN</h1>
+        <h1>AI7 LOGIN</h1>
+                <h2>Be careful,I am not ordinary ai!!!😝😎</h2>
 
         <input
         type="text"
         id="username"
-        placeholder="Username">
+        placeholder="Enter Username">
 
         <input
         type="password"
         id="password"
-        placeholder="Password">
+        placeholder="Password = username + ot7">
 
         <button onclick="login()">
             LOGIN
@@ -271,13 +272,14 @@ onclick="startVoice()">
 function login(){
 
     const user =
-    document.getElementById("username").value;
+    document.getElementById("username").value.trim();
 
     const pass =
-    document.getElementById("password").value;
+    document.getElementById("password").value.trim();
 
-    if(user === "usernameot7" &&
-       pass === "nirmala"){
+    // PASSWORD MUST BE username + ot7
+
+    if(pass === user + "ot7"){
 
         document
         .getElementById("loginPage")
@@ -303,7 +305,7 @@ function login(){
         document
         .getElementById("error")
         .innerHTML =
-        "Wrong Username or Password ⚠️";
+        "Password must be username + ot7 ⚠️";
     }
 }
 
