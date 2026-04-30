@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cyber AI</title>
+
+<style>
+body{
+background:black;
+color:#00ff88;
+font-family:consolas;
+text-align:center;
+}
+
+#chat{
+height:70vh;
+overflow:auto;
+border:2px solid #00ff88;
+padding:10px;
+margin-bottom:10px;
+}
+
+input{
+width:70%;
+padding:10px;
+}
+
+button{
+padding:10px;
+background:#00ff88;
+border:none;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>CYBER AI TERMINAL 💜</h2>
+
+<div id="chat">
+<div>AI: Hello 😎 (BTS mode ON)</div>
+</div>
+
+<input id="msg" placeholder="Ask anything...">
+<button onclick="send()">SEND</button>
+
+<script>
+
+const chat = document.getElementById("chat");
+
+async function send(){
+
+let text = document.getElementById("msg").value;
+if(!text) return;
+
+chat.innerHTML += "<div>You: " + text + "</div>";
+
+document.getElementById("msg").value = "";
+
+const res = await fetch("https://YOUR-VERCEL-LINK/api/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({message:text})
+});
+
+const data = await res.json();
+
+chat.innerHTML += "<div>AI: " + data.reply + "</div>";
+
+chat.scrollTop = chat.scrollHeight;
+}
+
+</script>
+
+</body>
+</html>
