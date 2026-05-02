@@ -21,7 +21,48 @@ body{
     overflow:hidden;
 }
 
-/* LOGIN PAGE */
+/* MATRIX */
+
+#matrix{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+/* LOADER */
+
+#loader{
+    position:fixed;
+    width:100%;
+    height:100vh;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#00ff88;
+    font-size:22px;
+    z-index:9999;
+    animation:fadeOut 3s forwards;
+}
+
+@keyframes fadeOut{
+
+    0%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+/* LOGIN */
 
 #loginPage{
     width:100%;
@@ -29,7 +70,6 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:black;
 }
 
 .login-box{
@@ -37,15 +77,14 @@ body{
     max-width:350px;
     padding:30px;
     border:2px solid #00ff88;
-    box-shadow:0 0 20px #00ff88;
     border-radius:10px;
-    background:#000;
+    background:black;
+    box-shadow:0 0 20px #00ff88;
 }
 
 .login-box h1{
     text-align:center;
     margin-bottom:20px;
-    color:#00ff88;
 }
 
 .login-box input{
@@ -55,9 +94,8 @@ body{
     background:black;
     border:1px solid #00ff88;
     color:#00ff88;
-    outline:none;
     border-radius:8px;
-    font-size:16px;
+    outline:none;
 }
 
 .login-box button{
@@ -65,22 +103,18 @@ body{
     padding:14px;
     background:#00ff88;
     border:none;
+    border-radius:8px;
     font-weight:bold;
     cursor:pointer;
-    border-radius:8px;
-}
-
-.login-box button:hover{
-    background:#00cc66;
 }
 
 #error{
     color:red;
-    margin-top:10px;
     text-align:center;
+    margin-top:10px;
 }
 
-/* CHAT PAGE */
+/* CHAT */
 
 #chatPage{
     display:none;
@@ -94,21 +128,18 @@ header{
     background:#001a0d;
     border-bottom:2px solid #00ff88;
     font-size:22px;
-    flex-shrink:0;
 }
 
 #chat{
     flex:1;
     overflow-y:auto;
     padding:15px;
-    padding-bottom:110px;
-    word-wrap:break-word;
+    padding-bottom:120px;
 }
 
 .msg{
     margin:12px 0;
     line-height:1.6;
-    font-size:15px;
 }
 
 .user{
@@ -119,18 +150,17 @@ header{
     color:#00ff88;
 }
 
-/* INPUT AREA */
+/* INPUT */
 
 .input-box{
     position:fixed;
     bottom:0;
-    left:0;
     width:100%;
     display:flex;
     gap:8px;
+    padding:10px;
     background:black;
     border-top:2px solid #00ff88;
-    padding:10px;
 }
 
 #text{
@@ -139,22 +169,17 @@ header{
     background:black;
     border:1px solid #00ff88;
     color:#00ff88;
-    outline:none;
     border-radius:8px;
-    font-size:16px;
+    outline:none;
 }
 
 .send-btn{
     width:70px;
-    background:#00ff88;
     border:none;
-    font-weight:bold;
-    cursor:pointer;
+    background:#00ff88;
     border-radius:8px;
-}
-
-.send-btn:hover{
-    background:#00cc66;
+    cursor:pointer;
+    font-weight:bold;
 }
 
 /* MOBILE */
@@ -163,25 +188,17 @@ header{
 
     header{
         font-size:18px;
-        padding:12px;
     }
 
-    .msg{
-        font-size:14px;
+    .send-btn{
+        width:60px;
+        font-size:12px;
     }
 
     #text{
         font-size:15px;
-        padding:12px;
-    }
-
-    .send-btn{
-        width:65px;
-        font-size:13px;
     }
 }
-
-/* SCROLLBAR */
 
 ::-webkit-scrollbar{
     width:6px;
@@ -196,19 +213,34 @@ header{
 
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- MUSIC -->
+
+<audio id="bgm" loop>
+    <source src="./bgm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MATRIX -->
+
+<canvas id="matrix"></canvas>
+
+<!-- LOADER -->
+
+<div id="loader">
+⚡ CONNECTING TO BTS CYBER NETWORK ⚡
+</div>
+
+<!-- LOGIN -->
 
 <div id="loginPage">
 
     <div class="login-box">
 
-        <h1>AI7 LOGIN</h1>
-                <h2>Be careful,I am not ordinary ai!!!😝😎</h2>
+        <h1>CYBER LOGIN 💜</h1>
 
         <input
         type="text"
         id="username"
-        placeholder="Enter Username">
+        placeholder="Username">
 
         <input
         type="password"
@@ -216,7 +248,7 @@ header{
         placeholder="Password = username + ot7">
 
         <button onclick="login()">
-            LOGIN
+        LOGIN
         </button>
 
         <div id="error"></div>
@@ -225,7 +257,7 @@ header{
 
 </div>
 
-<!-- CHAT PAGE -->
+<!-- CHAT -->
 
 <div id="chatPage">
 
@@ -236,8 +268,8 @@ CYBER BTS AI 💜
 <div id="chat">
 
 <div class="msg ai">
-AI: Welcome to CYBER BTS AI 😎💜<br><br>
-Ask me anything about BTS, music, coding, movies, studies, games, life and more ✨
+⚡ Welcome to CYBER BTS AI 😎💜<br><br>
+Talk about BTS, Instagram, coding, music, studies and life ✨
 </div>
 
 </div>
@@ -247,7 +279,7 @@ Ask me anything about BTS, music, coding, movies, studies, games, life and more 
 <input
 type="text"
 id="text"
-placeholder="Ask anything...">
+placeholder="Ask anything or type @username">
 
 <button
 class="send-btn"
@@ -259,6 +291,12 @@ SEND
 class="send-btn"
 onclick="startVoice()">
 🎤
+</button>
+
+<button
+class="send-btn"
+onclick="scanProfile()">
+SCAN
 </button>
 
 </div>
@@ -277,9 +315,18 @@ function login(){
     const pass =
     document.getElementById("password").value.trim();
 
-    // PASSWORD MUST BE username + ot7
-
     if(pass === user + "ot7"){
+
+        /* PLAY MUSIC */
+
+        const music =
+        document.getElementById("bgm");
+
+        music.volume = 0.5;
+
+        music.play();
+
+        /* OPEN CHAT */
 
         document
         .getElementById("loginPage")
@@ -291,11 +338,10 @@ function login(){
 
         document
         .getElementById("chat")
-        .innerHTML = `
+        .innerHTML += `
         <div class="msg ai">
-        AI: Hey ${user} 💜<br><br>
-        Welcome to CYBER BTS AI 😎<br>
-        Ready to talk about BTS, music, coding, studies, movies and life ✨
+        💜 Welcome ${user}<br>
+        BTS Cyber Network Connected ⚡
         </div>
         `;
     }
@@ -305,7 +351,7 @@ function login(){
         document
         .getElementById("error")
         .innerHTML =
-        "Password must be username + ot7 ⚠️";
+        "Password must be username + ot7";
     }
 }
 
@@ -324,8 +370,6 @@ async function send(){
 
     if(!text) return;
 
-    /* USER MESSAGE */
-
     chat.innerHTML += `
     <div class="msg user">
     YOU: ${text}
@@ -333,8 +377,6 @@ async function send(){
     `;
 
     input.value = "";
-
-    /* LOADING */
 
     chat.innerHTML += `
     <div class="msg ai" id="loading">
@@ -347,7 +389,8 @@ async function send(){
 
     try{
 
-        const res = await fetch("/api/chat", {
+        const res =
+        await fetch("/api/chat",{
 
             method:"POST",
 
@@ -358,7 +401,6 @@ async function send(){
             body:JSON.stringify({
                 message:text
             })
-
         });
 
         const data =
@@ -371,6 +413,44 @@ async function send(){
         chat.innerHTML += `
         <div class="msg ai">
         AI: ${data.reply}
+        </div>
+        `;
+
+        /* AI VOICE */
+
+        const speech =
+        new SpeechSynthesisUtterance(
+        data.reply
+        );
+
+        speech.lang = "en-US";
+
+        window
+        .speechSynthesis
+        .speak(speech);
+
+        /* RANDOM BTS MESSAGE */
+
+        const btsMessages = [
+
+        "📩 Jungkook: drink water 💜",
+
+        "📩 Taehyung: don't skip meals 🌌",
+
+        "📩 RM: keep chasing your dreams ⚡",
+
+        "📩 Jimin: you're amazing 💜"
+
+        ];
+
+        chat.innerHTML += `
+        <div class="msg ai">
+        ${
+        btsMessages[
+        Math.floor(
+        Math.random()*btsMessages.length
+        )]
+        }
         </div>
         `;
 
@@ -390,8 +470,6 @@ async function send(){
         ERROR CONNECTING ⚠️
         </div>
         `;
-
-        console.log(err);
     }
 }
 
@@ -406,7 +484,6 @@ function(e){
     if(e.key === "Enter"){
         send();
     }
-
 });
 
 /* VOICE INPUT */
@@ -421,7 +498,8 @@ function startVoice(){
 
     recognition.start();
 
-    recognition.onresult = function(event){
+    recognition.onresult =
+    function(event){
 
         const transcript =
         event.results[0][0].transcript;
@@ -432,15 +510,139 @@ function startVoice(){
 
         send();
     };
+}
 
-    recognition.onerror = function(event){
+/* INSTAGRAM SCAN */
+
+function scanProfile(){
+
+    const input =
+    document.getElementById("text").value;
+
+    if(input.startsWith("@")){
+
+        const energy =
+        Math.floor(Math.random()*20)+80;
+
+        const members = [
+        "Jungkook",
+        "Taehyung",
+        "Jimin",
+        "RM",
+        "Suga",
+        "Jin",
+        "J-Hope"
+        ];
+
+        const randomMember =
+        members[
+        Math.floor(
+        Math.random()*members.length
+        )];
+
+        chat.innerHTML += `
+        <div class="msg ai">
+
+        ⚡ SCANNING INSTAGRAM PROFILE...<br><br>
+
+        📸 PROFILE: ${input}<br><br>
+
+        💜 ARMY ENERGY:
+        ${energy}%<br><br>
+
+        ✨ BTS MEMBER MATCH:
+        ${randomMember}<br><br>
+
+        🌌 VIBE:
+        emotional midnight ARMY 😭💜
+
+        </div>
+        `;
+
+        chat.scrollTop =
+        chat.scrollHeight;
+    }
+
+    else{
 
         alert(
-        "Voice error: " +
-        event.error
+        "Type Instagram username starting with @"
         );
-    };
+    }
 }
+
+/* MATRIX EFFECT */
+
+const canvas =
+document.getElementById("matrix");
+
+const ctx =
+canvas.getContext("2d");
+
+canvas.width =
+window.innerWidth;
+
+canvas.height =
+window.innerHeight;
+
+const letters =
+"01BTS💜⚡";
+
+const fontSize = 14;
+
+const columns =
+canvas.width / fontSize;
+
+const drops = [];
+
+for(let i=0;i<columns;i++){
+    drops[i]=1;
+}
+
+function draw(){
+
+    ctx.fillStyle =
+    "rgba(0,0,0,0.05)";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle =
+    "#00ff88";
+
+    ctx.font =
+    fontSize + "px monospace";
+
+    for(let i=0;i<drops.length;i++){
+
+        const text =
+        letters[Math.floor(
+        Math.random()*letters.length
+        )];
+
+        ctx.fillText(
+            text,
+            i*fontSize,
+            drops[i]*fontSize
+        );
+
+        if(
+        drops[i]*fontSize >
+        canvas.height &&
+        Math.random()>0.975
+        ){
+            drops[i]=0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw,35);
 
 </script>
 
