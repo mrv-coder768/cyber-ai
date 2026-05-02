@@ -504,9 +504,19 @@ startIntroMusic,
 
 function startIntroMusic(){
 
+    /* HIDE TAP TEXT */
+
+    document
+    .querySelector(".tap-text")
+    .style.display = "none";
+
+    /* PLAY INTRO MUSIC */
+
     introMusic.volume = 0.6;
 
     introMusic.play();
+
+    /* STOP AFTER 9 SECONDS */
 
     setTimeout(() => {
 
@@ -522,7 +532,7 @@ function startIntroMusic(){
         .getElementById("loginPage")
         .style.display = "flex";
 
-    },8000);
+    },9000);
 }
 
 /* LOGIN */
