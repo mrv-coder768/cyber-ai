@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BTS UNIVERSE AI 💜</title>
+<title>CYBER BTS AI 💜</title>
 
 <style>
 
@@ -17,7 +17,7 @@ body{
     background:black;
     overflow:hidden;
     font-family:Consolas, monospace;
-    color:#d291ff;
+    color:#00ff88;
     height:100vh;
 }
 
@@ -30,7 +30,7 @@ body{
     z-index:-2;
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 
 #universeIntro{
     position:fixed;
@@ -44,6 +44,8 @@ body{
     overflow:hidden;
     z-index:9999;
 }
+
+/* PURPLE STARS */
 
 .stars{
     position:absolute;
@@ -70,7 +72,7 @@ body{
     }
 }
 
-/* PORTAL */
+/* PURPLE PORTAL */
 
 .portal{
 
@@ -118,7 +120,7 @@ body{
     }
 }
 
-/* TEXT */
+/* INTRO TEXT */
 
 .intro-text{
 
@@ -138,6 +140,19 @@ body{
     animation:textGlow 1s infinite alternate;
 }
 
+.tap-text{
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    text-align:center;
+
+    color:white;
+
+    animation:textGlow 1s infinite alternate;
+}
+
 @keyframes textGlow{
 
     from{
@@ -149,7 +164,7 @@ body{
     }
 }
 
-/* LOGIN PAGE */
+/* LOGIN */
 
 #loginPage{
 
@@ -169,15 +184,15 @@ body{
 
     padding:30px;
 
-    border:2px solid #d291ff;
+    border:2px solid #00ff88;
 
     border-radius:15px;
 
     background:rgba(0,0,0,0.8);
 
     box-shadow:
-    0 0 20px #d291ff,
-    0 0 60px #d291ff;
+    0 0 20px #00ff88,
+    0 0 60px #00ff88;
 }
 
 .login-box h1{
@@ -186,7 +201,7 @@ body{
 
     margin-bottom:20px;
 
-    color:#d291ff;
+    color:#00ff88;
 }
 
 .login-box input{
@@ -199,9 +214,9 @@ body{
 
     background:black;
 
-    border:1px solid #d291ff;
+    border:1px solid #00ff88;
 
-    color:#d291ff;
+    color:#00ff88;
 
     border-radius:10px;
 
@@ -216,7 +231,7 @@ body{
 
     border:none;
 
-    background:#d291ff;
+    background:#00ff88;
 
     color:black;
 
@@ -236,7 +251,7 @@ body{
     text-align:center;
 }
 
-/* CHAT PAGE */
+/* CHAT */
 
 #chatPage{
 
@@ -253,13 +268,13 @@ header{
 
     text-align:center;
 
-    background:#1a001f;
+    background:#001a0d;
 
-    border-bottom:2px solid #d291ff;
+    border-bottom:2px solid #00ff88;
 
     font-size:22px;
 
-    color:#d291ff;
+    color:#00ff88;
 }
 
 #chat{
@@ -281,11 +296,11 @@ header{
 }
 
 .user{
-    color:#66ffff;
+    color:#00ffff;
 }
 
 .ai{
-    color:#d291ff;
+    color:#00ff88;
 }
 
 /* INPUT */
@@ -306,7 +321,7 @@ header{
 
     background:black;
 
-    border-top:2px solid #d291ff;
+    border-top:2px solid #00ff88;
 }
 
 #text{
@@ -317,9 +332,9 @@ header{
 
     background:black;
 
-    border:1px solid #d291ff;
+    border:1px solid #00ff88;
 
-    color:#d291ff;
+    color:#00ff88;
 
     border-radius:10px;
 
@@ -332,7 +347,7 @@ header{
 
     border:none;
 
-    background:#d291ff;
+    background:#00ff88;
 
     color:black;
 
@@ -393,6 +408,10 @@ header{
         ENTERING BTS UNIVERSE 💜
     </h1>
 
+    <h2 class="tap-text">
+        Tap Anywhere To Enter ✨
+    </h2>
+
 </div>
 
 <!-- LOGIN -->
@@ -401,7 +420,7 @@ header{
 
     <div class="login-box">
 
-        <h1>BTS LOGIN 💜</h1>
+        <h1>CYBER LOGIN ⚡</h1>
 
         <input
         type="text"
@@ -428,13 +447,13 @@ header{
 <div id="chatPage">
 
 <header>
-BTS UNIVERSE AI 💜
+CYBER BTS AI ⚡
 </header>
 
 <div id="chat">
 
 <div class="msg ai">
-💜 Welcome to BTS Universe AI ✨
+⚡ Welcome to CYBER BTS AI 💜
 </div>
 
 </div>
@@ -444,12 +463,24 @@ BTS UNIVERSE AI 💜
 <input
 type="text"
 id="text"
-placeholder="Ask anything...">
+placeholder="Ask anything or type @username">
 
 <button
 class="send-btn"
 onclick="send()">
 SEND
+</button>
+
+<button
+class="send-btn"
+onclick="startVoice()">
+🎤
+</button>
+
+<button
+class="send-btn"
+onclick="scanProfile()">
+SCAN
 </button>
 
 </div>
@@ -458,38 +489,41 @@ SEND
 
 <script>
 
-/* PLAY INTRO MUSIC */
+/* INTRO MUSIC */
 
 const introMusic =
 document.getElementById("introMusic");
 
-introMusic.volume = 0.6;
+/* START AFTER TAP */
 
-introMusic.play();
+document.body.addEventListener(
+"click",
+startIntroMusic,
+{ once:true }
+);
 
-/* AFTER 8 SECONDS */
+function startIntroMusic(){
 
-setTimeout(() => {
+    introMusic.volume = 0.6;
 
-    /* STOP INTRO MUSIC */
+    introMusic.play();
 
-    introMusic.pause();
+    setTimeout(() => {
 
-    introMusic.currentTime = 0;
+        introMusic.pause();
 
-    /* HIDE INTRO */
+        introMusic.currentTime = 0;
 
-    document
-    .getElementById("universeIntro")
-    .style.display = "none";
+        document
+        .getElementById("universeIntro")
+        .style.display = "none";
 
-    /* SHOW LOGIN PAGE */
+        document
+        .getElementById("loginPage")
+        .style.display = "flex";
 
-    document
-    .getElementById("loginPage")
-    .style.display = "flex";
-
-},8000);
+    },8000);
+}
 
 /* LOGIN */
 
@@ -503,16 +537,12 @@ function login(){
 
     if(pass === user + "ot7"){
 
-        /* START CHAT MUSIC */
-
         const chatMusic =
         document.getElementById("chatMusic");
 
         chatMusic.volume = 0.5;
 
         chatMusic.play();
-
-        /* OPEN CHAT */
 
         document
         .getElementById("loginPage")
@@ -527,7 +557,7 @@ function login(){
         .innerHTML += `
         <div class="msg ai">
         💜 Welcome ${user}<br>
-        You entered BTS Universe ⚡
+        Cyber BTS Network Connected ⚡
         </div>
         `;
     }
@@ -634,6 +664,88 @@ async function send(){
     }
 }
 
+/* VOICE COMMAND */
+
+function startVoice(){
+
+    const recognition =
+    new(window.SpeechRecognition ||
+         window.webkitSpeechRecognition)();
+
+    recognition.lang = "en-US";
+
+    recognition.start();
+
+    recognition.onresult =
+    function(event){
+
+        const transcript =
+        event.results[0][0].transcript;
+
+        document
+        .getElementById("text")
+        .value = transcript;
+
+        send();
+    };
+}
+
+/* INSTAGRAM SCAN */
+
+function scanProfile(){
+
+    const input =
+    document.getElementById("text").value;
+
+    if(input.startsWith("@")){
+
+        const energy =
+        Math.floor(Math.random()*20)+80;
+
+        const members = [
+        "Jungkook",
+        "Taehyung",
+        "Jimin",
+        "RM",
+        "Suga",
+        "Jin",
+        "J-Hope"
+        ];
+
+        const randomMember =
+        members[
+        Math.floor(
+        Math.random()*members.length
+        )];
+
+        chat.innerHTML += `
+        <div class="msg ai">
+
+        ⚡ SCANNING INSTAGRAM PROFILE...<br><br>
+
+        📸 PROFILE: ${input}<br><br>
+
+        💜 ARMY ENERGY:
+        ${energy}%<br><br>
+
+        ✨ BTS MEMBER MATCH:
+        ${randomMember}
+
+        </div>
+        `;
+
+        chat.scrollTop =
+        chat.scrollHeight;
+    }
+
+    else{
+
+        alert(
+        "Type Instagram username starting with @"
+        );
+    }
+}
+
 /* ENTER KEY */
 
 document
@@ -647,7 +759,7 @@ function(e){
     }
 });
 
-/* MATRIX EFFECT */
+/* MATRIX */
 
 const canvas =
 document.getElementById("matrix");
@@ -662,7 +774,7 @@ canvas.height =
 window.innerHeight;
 
 const letters =
-"💜BTS01";
+"01BTS⚡💜";
 
 const fontSize = 14;
 
@@ -688,7 +800,7 @@ function draw(){
     );
 
     ctx.fillStyle =
-    "#d291ff";
+    "#00ff88";
 
     ctx.font =
     fontSize + "px monospace";
